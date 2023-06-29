@@ -2,14 +2,10 @@ apiVersion: automation.cloudbees.io/v1alpha1
 kind: workflow
 name: My automation 222222
 
-
-env:
-  AWS_REGION: 'us-west-1'
-  ECR_REPOSITORY: '<ECR-repo-name>'
-  ECS_SERVICE: '<ECS-service-name>'
-  ECS_CLUSTER: '<ECS-cluster-name>'
-  ECS_TASK_DEFINITION: '.aws/task-definition.json'
-  CONTAINER_NAME: '<container-name>'
+on:
+  push:
+    branches:
+      - main3
 
 jobs:
   build:
