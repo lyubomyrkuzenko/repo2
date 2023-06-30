@@ -1,13 +1,19 @@
 apiVersion: automation.cloudbees.io/v1alpha1
 kind: workflow
-name: My automation 222222323232
+name: My automation2
 
 on:
   push:
     branches:
-      - main3
+      - main
 
 jobs:
   build:
     steps:
-      - uses: actions/checkout@v3
+      - name: Build and Test
+        uses: actions/checkout@v3
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v3
+      - name: Login to Amazon ECR
+        id: login-ecr
+        uses: aws-actions/amazon-ecr-login@v3
